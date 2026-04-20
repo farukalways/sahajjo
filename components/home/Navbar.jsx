@@ -51,14 +51,14 @@ export default function Navbar() {
 
           {/* Desktop Nav Links */}
           <div className="hidden md:flex items-center gap-7">
-            {navLinks.map((link) => (
-              <a
-                key={link.label}
-                href={link.href}
+            {navLinks.map((navLink) => (
+              <Link
+                key={navLink.label}
+                href={navLink.href}
                 className="text-slate-600 hover:text-teal-600 text-sm font-medium transition-colors duration-200"
               >
-                {link.label}
-              </a>
+                {navLink.label}
+              </Link>
             ))}
           </div>
 
@@ -70,7 +70,7 @@ export default function Navbar() {
             >
               লগ ইন
             </Link>
-            <a
+            <Link
               href="#cases"
               className="flex items-center gap-2 bg-gradient-to-r from-amber-400 to-amber-500 hover:from-amber-500 hover:to-amber-600 text-white font-bold text-sm px-5 py-2.5 rounded-full shadow-md hover:shadow-lg transition-all duration-200"
             >
@@ -82,7 +82,7 @@ export default function Navbar() {
                 />
               </svg>
               এখনই Donate করুন
-            </a>
+            </Link>
           </div>
 
           {/* Mobile menu button */}
@@ -122,15 +122,15 @@ export default function Navbar() {
         className={`md:hidden overflow-hidden transition-all duration-300 ${menuOpen ? "max-h-96" : "max-h-0"}`}
       >
         <div className="bg-white border-t border-slate-100 px-4 py-4 space-y-1">
-          {navLinks.map((link) => (
-            <a
-              key={link.label}
-              href={link.href}
+          {navLinks.map((navLink) => (
+            <Link
+              key={navLink.label}
+              href={navLink.href}
               onClick={() => setMenuOpen(false)}
               className="block text-slate-600 font-medium text-sm py-2.5 px-3 rounded-lg hover:bg-teal-50 hover:text-teal-600 transition-colors"
             >
-              {link.label}
-            </a>
+              {navLink.label}
+            </Link>
           ))}
           <div className="pt-3 border-t border-slate-100 mt-3 space-y-2">
             <Link
@@ -139,13 +139,13 @@ export default function Navbar() {
             >
               লগ ইন
             </Link>
-            <a
+            <Link
               href="#cases"
               onClick={() => setMenuOpen(false)}
               className="flex items-center justify-center gap-2 bg-gradient-to-r from-amber-400 to-amber-500 text-white font-bold text-sm py-3 rounded-full"
             >
               ❤️ এখনই Donate করুন
-            </a>
+            </Link>
           </div>
         </div>
       </div>

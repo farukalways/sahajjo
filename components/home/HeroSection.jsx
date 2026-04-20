@@ -1,6 +1,6 @@
-// components/home/HeroSection.js
 "use client";
 import { useEffect, useState } from "react";
+import Link from "next/link";
 
 export default function HeroSection() {
   const [mounted, setMounted] = useState(false);
@@ -75,7 +75,7 @@ export default function HeroSection() {
 
             {/* CTA Buttons */}
             <div className="flex flex-wrap gap-4 mb-12">
-              <a
+              <Link
                 href="#cases"
                 className="inline-flex items-center gap-2 bg-gradient-to-r from-amber-400 to-amber-500 hover:from-amber-500 hover:to-amber-600 text-white font-bold px-7 py-3.5 rounded-full shadow-lg hover:shadow-amber-500/30 hover:-translate-y-0.5 transition-all duration-200 text-base"
               >
@@ -91,8 +91,8 @@ export default function HeroSection() {
                   />
                 </svg>
                 Donate Now
-              </a>
-              <a
+              </Link>
+              <Link
                 href="#cases"
                 className="inline-flex items-center gap-2 bg-white/10 hover:bg-white/20 backdrop-blur-sm text-white font-semibold px-7 py-3.5 rounded-full border border-white/30 hover:border-white/50 transition-all duration-200 text-base"
               >
@@ -116,7 +116,7 @@ export default function HeroSection() {
                   />
                 </svg>
                 View Cases
-              </a>
+              </Link>
             </div>
 
             {/* Trust indicators */}

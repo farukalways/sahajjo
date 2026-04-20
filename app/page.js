@@ -1,14 +1,14 @@
 import Navbar from "@/components/home/Navbar";
 import HeroSection from "@/components/home/HeroSection";
 import HowItWorks from "@/components/home/HowItWorks";
-// import ActiveCases from "@/components/home/ActiveCases";
-// import TransparencySection from "@/components/home/TransparencySection";
-// import ImpactStats from "@/components/home/ImpactStats";
-// import StoriesSection from "@/components/home/StoriesSection";
-// import TestimonialsSection from "@/components/home/TestimonialsSection";
-// import TrustSafety from "@/components/home/TrustSafety";
-// import AboutSection from "@/components/home/AboutSection";
-// import ContactSection from "@/components/home/ContactSection";
+import ActiveCases from "@/components/home/ActiveCases";
+import TransparencySection from "@/components/home/TransparencySection";
+import ImpactStats from "@/components/home/ImpactStats";
+import StoriesSection from "@/components/home/StoriesSection";
+import TestimonialsSection from "@/components/home/TestimonialsSection";
+import TrustSafety from "@/components/home/TrustSafety";
+import AboutSection from "@/components/home/AboutSection";
+import ContactInfo from "@/components/home/ContactInfo";
 // import Footer from "@/components/home/Footer";
 
 export const metadata = {
@@ -23,15 +23,15 @@ export default function Home() {
       <Navbar />
       <HeroSection />
       <HowItWorks />
-      {/*<ActiveCases />
+      <ActiveCases />
       <TransparencySection />
       <ImpactStats />
       <StoriesSection />
       <TestimonialsSection />
       <TrustSafety />
       <AboutSection />
-      <ContactSection />
-      <Footer /> */}
+      <ContactInfo />
+      {/* <Footer /> */}
     </main>
   );
 }
