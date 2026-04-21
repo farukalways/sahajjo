@@ -1,5 +1,3 @@
-// components/home/TransparencySection.js
-
 const recentDonations = [
   {
     name: "মোঃ আব্দুল করিম",

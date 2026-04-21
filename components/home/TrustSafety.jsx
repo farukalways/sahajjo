@@ -1,5 +1,3 @@
-// components/home/TrustSafety.js
-
 const verificationSteps = [
   {
     step: "০১",

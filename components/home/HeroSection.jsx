@@ -1,14 +1,6 @@
-"use client";
-import { useEffect, useState } from "react";
 import Link from "next/link";
 
 export default function HeroSection() {
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
   return (
     <section className="relative min-h-screen flex items-center overflow-hidden bg-gradient-to-br from-teal-800 via-teal-700 to-slate-800 pt-16">
       {/* Background blobs */}
@@ -31,7 +23,9 @@ export default function HeroSection() {
         <div className="grid lg:grid-cols-2 gap-14 items-center">
           {/* ===== LEFT CONTENT ===== */}
           <div
-            className={`transition-all duration-700 ${mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
+            className={
+              "opacity-0 translate-y-8 animate-fadeUp [animation-delay:500ms]"
+            }
           >
             {/* Live badge */}
             <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full px-4 py-2 mb-8">
@@ -139,7 +133,9 @@ export default function HeroSection() {
 
           {/* ===== RIGHT CARD ===== */}
           <div
-            className={`hidden lg:block transition-all duration-700 delay-200 ${mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
+            className={
+              "opacity-0 translate-y-8 animate-fadeUp [animation-delay:500ms]"
+            }
           >
             <div className="bg-white/10 backdrop-blur-md border border-white/20 rounded-3xl p-7 space-y-5">
               <div className="flex items-center justify-between">

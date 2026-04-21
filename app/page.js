@@ -9,7 +9,7 @@ import TestimonialsSection from "@/components/home/TestimonialsSection";
 import TrustSafety from "@/components/home/TrustSafety";
 import AboutSection from "@/components/home/AboutSection";
 import ContactInfo from "@/components/home/ContactInfo";
-// import Footer from "@/components/home/Footer";
+import Footer from "@/components/home/Footer";
 
 export const metadata = {
   title: "সাহায্য — আপনার ছোট সাহায্য বদলে দিতে পারে একটি জীবন",
@@ -31,7 +31,7 @@ export default function Home() {
       <TrustSafety />
       <AboutSection />
       <ContactInfo />
-      {/* <Footer /> */}
+      <Footer />
     </main>
   );
 }

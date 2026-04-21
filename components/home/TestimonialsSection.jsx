@@ -1,4 +1,3 @@
-// components/home/TestimonialsSection.js
 "use client";
 import { useState } from "react";
 

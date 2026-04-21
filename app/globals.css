@@ -6,3 +6,14 @@
   --background: #ffffff;
   --foreground: #171717;
 }
+
+.animate-fadeUp {
+  animation: fadeUp 0.7s ease forwards;
+}
+
+@keyframes fadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

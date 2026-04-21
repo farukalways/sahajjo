@@ -1,4 +1,3 @@
-// components/home/ImpactStats.js
 "use client";
 import { useEffect, useRef, useState } from "react";
 

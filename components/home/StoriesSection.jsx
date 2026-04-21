@@ -1,5 +1,3 @@
-// components/home/StoriesSection.js
-
 const stories = [
   {
     name: "আবু রায়হান",

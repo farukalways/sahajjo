@@ -1,5 +1,3 @@
-// components/home/AboutSection.js
-
 const achievements = [
   {
     num: "১,২৪৭+",
