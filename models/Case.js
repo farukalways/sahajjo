@@ -17,7 +17,7 @@ const CaseSchema = new mongoose.Schema(
       enum: ["active", "completed", "expired"],
       default: "active",
     },
-    gradient: { type: String, default: "from-teal-400 to-teal-600" },
+    image: { type: String, required: true },
     initial: { type: String },
     tagColor: { type: String },
   },

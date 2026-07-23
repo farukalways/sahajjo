@@ -9,8 +9,8 @@ const CoinTransactionSchema = new mongoose.Schema(
     },
     type: { type: String, enum: ["earned", "spent"], required: true },
     amount: { type: Number, required: true },
-    reason: { type: String }, // "signup_bonus", "donation", "admin_grant"
-    refId: { type: mongoose.Schema.Types.ObjectId }, // donation _id বা অন্য ref
+    reason: { type: String },
+    refId: { type: mongoose.Schema.Types.ObjectId },
   },
   { timestamps: true },
 );

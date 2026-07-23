@@ -1,25 +1,27 @@
 import Link from "next/link";
 // import OAuthButtons from "./OAuthButtons";
+
 import SubmitButton from "./SubmitButton";
-import { credentialsLogin } from "@/app/actions/authActions";
+import { registerUser } from "@/app/actions/authActions";
 
 export const metadata = {
-  title: "লগ ইন — সাহায্য",
-  description: "আপনার সাহায্য অ্যাকাউন্টে লগ ইন করুন",
+  title: "রেজিস্টার — সাহায্য",
+  description: "সাহায্য-তে নতুন অ্যাকাউন্ট তৈরি করুন",
 };
 
 const errorMessages = {
-  missing: "ইমেইল ও পাসওয়ার্ড দুটোই দিন।",
-  invalid: "ইমেইল অথবা পাসওয়ার্ড ভুল হয়েছে।",
+  missing: "সব ঘর পূরণ করুন।",
+  mismatch: "পাসওয়ার্ড দুটো মিলছে না।",
+  weak: "পাসওয়ার্ড কমপক্ষে ৬ ক্যারেক্টার হতে হবে।",
+  exists: "এই ইমেইল দিয়ে ইতিমধ্যে একটি অ্যাকাউন্ট আছে।",
 };
 
-export default function LoginForm({ searchParams }) {
+export default function RegisterForm({ searchParams }) {
   const errorMsg = errorMessages[searchParams?.error];
-  const justRegistered = searchParams?.registered === "1";
 
   return (
     <main className="min-h-screen flex bg-slate-50">
-      {/* ===== LEFT — branding panel (matches HeroSection gradient) ===== */}
+      {/* ===== LEFT — branding panel ===== */}
       <div className="hidden lg:flex lg:w-1/2 relative overflow-hidden bg-gradient-to-br from-teal-800 via-teal-700 to-slate-800 flex-col justify-between p-12">
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           <div className="absolute -top-32 -left-32 w-96 h-96 rounded-full bg-teal-500/20 blur-3xl" />
@@ -46,12 +48,12 @@ export default function LoginForm({ searchParams }) {
 
         <div className="relative">
           <h1 className="text-3xl xl:text-4xl font-bold text-white leading-snug mb-4">
-            আপনার ছোট সাহায্য{" "}
-            <span className="text-amber-300">বদলে দিতে পারে</span> একটি জীবন
+            আজই যুক্ত হন —{" "}
+            <span className="text-amber-300">হাজারো মানুষের পাশে</span> দাঁড়ান
           </h1>
           <p className="text-white/70 leading-relaxed max-w-md">
-            লগ ইন করে আপনার donation history, coin balance এবং সাহায্যপ্রাপ্ত
-            মানুষদের আপডেট দেখুন — সব এক জায়গায়।
+            অ্যাকাউন্ট তৈরি করলেই পাবেন স্বাগতম কয়েন, donation history ট্র্যাক
+            করার সুবিধা এবং প্রতিটি কেসের আপডেট সরাসরি।
           </p>
         </div>
 
@@ -75,7 +77,6 @@ export default function LoginForm({ searchParams }) {
       {/* ===== RIGHT — form ===== */}
       <div className="flex-1 flex items-center justify-center px-4 py-16 sm:px-6 lg:px-8">
         <div className="w-full max-w-md">
-          {/* Mobile logo */}
           <Link
             href="/"
             className="lg:hidden flex items-center gap-2.5 mb-10 w-fit mx-auto"
@@ -99,19 +100,12 @@ export default function LoginForm({ searchParams }) {
           <div className="bg-white border border-slate-200 rounded-3xl p-8 shadow-sm">
             <div className="mb-7">
               <h2 className="font-bold text-slate-800 text-2xl mb-1">
-                লগ ইন করুন
+                অ্যাকাউন্ট তৈরি করুন
               </h2>
               <p className="text-slate-400 text-sm">
-                আপনার অ্যাকাউন্টে ফিরে আসার জন্য স্বাগতম
+                মাত্র কয়েক সেকেন্ডে শুরু করুন
               </p>
             </div>
-
-            {justRegistered && (
-              <div className="mb-5 flex items-start gap-2.5 bg-green-50 border border-green-100 text-green-700 text-sm rounded-xl px-4 py-3">
-                <span>✅</span>
-                <span>অ্যাকাউন্ট তৈরি হয়েছে। এখন লগ ইন করুন।</span>
-              </div>
-            )}
 
             {errorMsg && (
               <div className="mb-5 flex items-start gap-2.5 bg-red-50 border border-red-100 text-red-600 text-sm rounded-xl px-4 py-3">
@@ -128,7 +122,20 @@ export default function LoginForm({ searchParams }) {
               <div className="h-px bg-slate-200 flex-1" />
             </div>
 
-            <form action={credentialsLogin} className="space-y-5">
+            <form action={registerUser} className="space-y-5">
+              <div>
+                <label className="block text-slate-600 text-xs font-semibold mb-1.5 uppercase tracking-wide">
+                  আপনার নাম
+                </label>
+                <input
+                  type="text"
+                  name="name"
+                  required
+                  placeholder="মোঃ আব্দুল করিম"
+                  className="w-full border border-slate-200 rounded-xl px-4 py-3 text-sm text-slate-800 placeholder-slate-300 focus:outline-none focus:border-teal-400 focus:ring-2 focus:ring-teal-50 transition-all"
+                />
+              </div>
+
               <div>
                 <label className="block text-slate-600 text-xs font-semibold mb-1.5 uppercase tracking-wide">
                   ইমেইল
@@ -142,39 +149,47 @@ export default function LoginForm({ searchParams }) {
                 />
               </div>
 
-              <div>
-                <div className="flex items-center justify-between mb-1.5">
-                  <label className="block text-slate-600 text-xs font-semibold uppercase tracking-wide">
+              <div className="grid grid-cols-2 gap-4">
+                <div>
+                  <label className="block text-slate-600 text-xs font-semibold mb-1.5 uppercase tracking-wide">
                     পাসওয়ার্ড
                   </label>
-                  <Link
-                    href="#"
-                    className="text-teal-600 text-xs font-semibold hover:underline"
-                  >
-                    ভুলে গেছেন?
-                  </Link>
+                  <input
+                    type="password"
+                    name="password"
+                    required
+                    minLength={6}
+                    placeholder="••••••••"
+                    className="w-full border border-slate-200 rounded-xl px-4 py-3 text-sm text-slate-800 placeholder-slate-300 focus:outline-none focus:border-teal-400 focus:ring-2 focus:ring-teal-50 transition-all"
+                  />
                 </div>
-                <input
-                  type="password"
-                  name="password"
-                  required
-                  placeholder="••••••••"
-                  className="w-full border border-slate-200 rounded-xl px-4 py-3 text-sm text-slate-800 placeholder-slate-300 focus:outline-none focus:border-teal-400 focus:ring-2 focus:ring-teal-50 transition-all"
-                />
+                <div>
+                  <label className="block text-slate-600 text-xs font-semibold mb-1.5 uppercase tracking-wide">
+                    আবার লিখুন
+                  </label>
+                  <input
+                    type="password"
+                    name="confirmPassword"
+                    required
+                    minLength={6}
+                    placeholder="••••••••"
+                    className="w-full border border-slate-200 rounded-xl px-4 py-3 text-sm text-slate-800 placeholder-slate-300 focus:outline-none focus:border-teal-400 focus:ring-2 focus:ring-teal-50 transition-all"
+                  />
+                </div>
               </div>
 
-              <SubmitButton pendingText="লগ ইন হচ্ছে...">
-                লগ ইন করুন
+              <SubmitButton pendingText="তৈরি হচ্ছে...">
+                অ্যাকাউন্ট তৈরি করুন
               </SubmitButton>
             </form>
 
             <p className="text-center text-slate-500 text-sm mt-7">
-              নতুন এখানে?{" "}
+              ইতিমধ্যে অ্যাকাউন্ট আছে?{" "}
               <Link
-                href="/register"
+                href="/login"
                 className="text-teal-600 font-bold hover:underline"
               >
-                অ্যাকাউন্ট তৈরি করুন
+                লগ ইন করুন
               </Link>
             </p>
           </div>

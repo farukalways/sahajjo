@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-import { nanoid } from "nanoid";
+// import { nanoid } from "nanoid";
 
 const DonationSchema = new mongoose.Schema(
   {
@@ -10,7 +10,7 @@ const DonationSchema = new mongoose.Schema(
     },
     userId: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
     coinAmount: { type: Number, required: true, min: 1 },
-    trackingId: { type: String, default: () => nanoid(10), unique: true },
+    trackingId: { type: String },
     anonymous: { type: Boolean, default: false },
     donorName: { type: String },
   },

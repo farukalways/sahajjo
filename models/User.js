@@ -2,12 +2,35 @@ import mongoose from "mongoose";
 
 const UserSchema = new mongoose.Schema(
   {
-    name: { type: String, required: true },
-    email: { type: String, required: true, unique: true },
-    image: { type: String },
-    role: { type: String, enum: ["user", "admin"], default: "user" },
-    coinBalance: { type: Number, default: 50000 },
-    totalDonated: { type: Number, default: 0 },
+    name: {
+      type: String,
+      required: true,
+    },
+    email: {
+      type: String,
+      required: true,
+      unique: true,
+    },
+    password: {
+      type: String,
+      required: true,
+    },
+    image: {
+      type: String,
+    },
+    role: {
+      type: String,
+      enum: ["user", "admin"],
+      default: "user",
+    },
+    coinBalance: {
+      type: Number,
+      default: 50000,
+    },
+    totalDonated: {
+      type: Number,
+      default: 0,
+    },
   },
   { timestamps: true },
 );
